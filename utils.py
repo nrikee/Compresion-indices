@@ -37,3 +37,18 @@ def integer(s):
     for i in xrange(len(s)):
         num += 2 ** i if s[i] == '1' else 0
     return num
+
+def split_bytes(string):
+    """
+    Dado una string con un número en binario, devuelve una lista de strings de tamaño 8 (un byte)
+
+    :rtype : list
+    :param string: Un número en binario
+    :return: La string dividida en strings de 8 carácteres
+    """
+    string = string[::-1]
+    lst = []
+    numbers = range(len(string)+1)[::8]
+    for n, m in zip(numbers[:-1], numbers[1:]):
+        lst.append(string[n:m][::-1])
+    return lst[::-1]
