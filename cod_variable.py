@@ -15,3 +15,21 @@ def encode_vb(numbers):
     for n in numbers:
         bytestream.extend(encode_single_vb(n))
     return bytestream
+
+
+def decode_vb(bytestream):
+    byts = utils.split_bytes(bytestream)
+
+    lst = []
+    aux = ''
+    for byte in byts:
+        if byte[0] == '0':
+            print byte
+            aux += byte[1:]
+        else:
+            print byte
+            aux += byte[1:]
+            number = utils.integer(aux)
+            lst.append(number)
+            aux = ''
+    return lst
